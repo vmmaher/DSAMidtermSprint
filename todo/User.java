@@ -13,6 +13,16 @@ public class User {
     tasks.addTask(description);
 }
 
+public void completeTask(String description) {
+    boolean result = tasks.markTaskCompleted(description);
+
+    if (result) {
+        System.out.println("Marked the task '" + description + "' as finished. Great work!");
+    } else {
+        System.out.println("The task named '" + description + "' wasn't found!");
+    }
+}
+
     public void viewTasks() {
         tasks.printTasks();
     }
