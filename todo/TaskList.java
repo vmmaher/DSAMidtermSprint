@@ -28,16 +28,52 @@ public class TaskList {
         }
     }
 
-    public void printTasks() {
-        Node current = head;
-        if (current == null) {
-            System.out.println("No tasks were found.");
-            return;
-        }
+    public boolean markTaskCompleted(String description) {
+    Node current = head;
 
-        while (current != null) {
-            System.out.println("- " + current.task.description + " [" + (current.task.completed ? "Completed" : "Pending") + "]");
-            current = current.next;
+    while (current != null) {
+        if (current.task.description.equals(description)) {
+            current.task.completed = true;
+            return true;
+        }
+        current = current.next;
+    }
+
+    return false;
+}
+    public void printTasks() {
+    Node current = head;
+    if (current == null) {
+        System.out.println("No tasks were found.");
+        return;
+    }
+
+        boolean hasPending = false;
+        System.out.println("Pending Tasks:");
+        Node temp = head;
+        while (temp != null) {
+            if (!temp.task.completed) {
+                System.out.println("- " + temp.task.description + " [Pending]");
+                hasPending = true;
+            }
+            temp = temp.next;
+        }
+        if (!hasPending) {
+        System.out.println("There are no pending tasks. Great job!");
+    }
+
+    boolean hasCompleted = false;
+        System.out.println("Completed Tasks:");
+        temp = head;
+        while (temp != null) {
+            if (temp.task.completed) {
+                System.out.println("- " + temp.task.description + " [Completed]");
+                hasCompleted = true;
+            }
+            temp = temp.next;
+        }
+        if (!hasCompleted) {
+            System.out.println("There are no completed tasks yet. Keep going!");
         }
     }
 }
