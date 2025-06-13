@@ -59,7 +59,7 @@ public class TaskList {
             temp = temp.next;
         }
         if (!hasPending) {
-        System.out.println("There are no pending tasks. Great job!");
+        System.out.println("There are no pending tasks. Great job!\n");
     }
 
     boolean hasCompleted = false;
@@ -73,7 +73,7 @@ public class TaskList {
             temp = temp.next;
         }
         if (!hasCompleted) {
-            System.out.println("There are no completed tasks yet. Keep going!");
+            System.out.println("There are no completed tasks yet. Keep going!\n");
         }
     }
 }
